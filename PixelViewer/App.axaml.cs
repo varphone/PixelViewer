@@ -231,12 +231,10 @@ namespace Carina.PixelViewer
 
 
 		// Load theme.
-        protected override IStyle OnLoadTheme(ThemeMode themeMode, bool useCompactUI)
+        protected override IStyle OnLoadTheme(ThemeMode themeMode)
         {
 	        var baseUri = $"avares://{this.Assembly.GetName().Name}/";
-	        var baseStyles = useCompactUI
-		        ? new StyleInclude(new Uri(baseUri)) { Source = new("/Styles/Base-Compact.axaml", UriKind.Relative) }
-		        : new StyleInclude(new Uri(baseUri)) { Source = new("/Styles/Base.axaml", UriKind.Relative) };
+	        var baseStyles = new StyleInclude(new Uri(baseUri)) { Source = new("/Styles/Base.axaml", UriKind.Relative) };
 	        var styles = themeMode switch
 			{
 				ThemeMode.Light => new StyleInclude(new Uri(baseUri)) { Source = new("/Styles/Light.axaml", UriKind.Relative) },
